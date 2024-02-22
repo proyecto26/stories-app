@@ -1,4 +1,4 @@
-import { ComponentProps, useState } from "react";
+import { useState } from "react";
 import { Container, Sprite, Stage } from "@pixi/react";
 import { Application } from "@pixi/app";
 
@@ -24,71 +24,63 @@ const Story: React.FC<StoryProps> = ({ stickers, photo }) => {
   });
   const { width, height, centerX, centerY, ratio } = useStageDimensions({
     app,
-    rendererSize: parentSize,
+    parentWidth: parentSize?.width,
+    parentHeight: parentSize?.height,
   });
 
-  const initializeApp: ComponentProps<typeof Stage>["onMount"] = (
-    storiesApp
-  ) => {
-    setApp(storiesApp);
+  const initializeApp = (app: Application) => {
+    setApp(app);
     resize();
-    storiesApp.stage.eventMode = "static";
-    storiesApp.stage.hitArea = storiesApp.screen;
-    const resizeApp = storiesApp.resize.bind(storiesApp);
-    requestAnimationFrame(() => {
-      resize();
-      resizeApp();
-    });
+    app.stage.eventMode = "static";
+    app.stage.hitArea = app.screen;
   };
 
   return (
     <div
-      ref={(ref) => ref && setParentEl(ref)}
+      ref={(ref) => setParentEl(ref || undefined)}
       className="w-full h-full flex items-center justify-center"
     >
-      {parentEl && (
-        <Stage
-          raf={true}
-          width={CANVAS_WIDTH}
-          height={CANVAS_HEIGHT}
-          options={{
-            backgroundColor: 0xffffff,
-            resizeTo: parentEl,
-            autoDensity: true,
-            antialias: true,
-          }}
-          onMount={initializeApp}
-          className="aspect-video object-contain transform-gpu"
-        >
-          {!!photo && (
-            <Sprite
-              image={photo}
-              width={width}
-              height={height}
-              anchor={0}
-              position={[centerX, centerY]}
+      <Stage
+        raf={true}
+        options={{
+          backgroundColor: 0xffffff,
+          resizeTo: parentEl,
+          autoDensity: true,
+          antialias: true,
+        }}
+        width={CANVAS_WIDTH}
+        height={CANVAS_HEIGHT}
+        onMount={initializeApp}
+        className="aspect-video object-contain transform-gpu"
+      >
+        {!!photo && (
+          <Sprite
+            image={photo}
+            scale={ratio}
+            anchor={0.5}
+            x={CANVAS_WIDTH / 2}
+            y={CANVAS_HEIGHT / 2}
+          />
+        )}
+        {stickers?.map((sticker, index) => (
+          <DraggableContainer
+            key={`${sticker}_${index}`}
+            width={CANVAS_WIDTH}
+            height={CANVAS_HEIGHT}
+            scale={ratio}
+            x={centerX}
+            y={centerY}
+          >
+            <ImageSprite
+              app={app}
+              imageSrc={sticker}
+              anchor={0.5}
+              x={CANVAS_WIDTH / 2}
+              y={CANVAS_HEIGHT / 2}
             />
-          )}
-          {stickers?.map((sticker, index) => (
-            <DraggableContainer
-              key={`${sticker}_${index}`}
-              width={CANVAS_WIDTH}
-              height={CANVAS_HEIGHT}
-              scale={ratio}
-              x={centerX}
-              y={centerY}
-            >
-              <ImageSprite
-                app={app}
-                imageSrc={sticker}
-                anchor={0.5}
-                x={CANVAS_WIDTH / 2}
-                y={CANVAS_HEIGHT / 2}
-              />
-            </DraggableContainer>
-          ))}
-        </Stage>
-      )}
+          </DraggableContainer>
+        ))}
+      </Stage>
       <ShareStory
         app={app}
         width={width}

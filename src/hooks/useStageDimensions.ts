@@ -10,15 +10,19 @@ import {
 
 export type UseStageDimensionsProps = {
   app?: Application;
-  rendererSize?: DOMRect;
+  parentWidth?: number;
+  parentHeight?: number;
 };
 
-export const useStageDimensions = (props: UseStageDimensionsProps) => {
-  const { app, rendererSize } = props;
-  const width = calculateWidth(rendererSize);
-  const height = calculateHeight(rendererSize);
-  const screenWidth = app?.screen?.width || rendererSize?.width || 0;
-  const screenHeight = app?.screen?.height || rendererSize?.height || 0;
+export const useStageDimensions = ({
+  app,
+  parentWidth = 0,
+  parentHeight = 0,
+}: UseStageDimensionsProps) => {
+  const width = calculateWidth(parentWidth, parentHeight);
+  const height = calculateHeight(parentWidth, parentHeight);
+  const screenWidth = app?.screen?.width || parentWidth;
+  const screenHeight = app?.screen?.height || parentHeight;
   const centerX = useMemo(
     () => screenWidth / 2 - width / 2,
     [screenWidth, width]
