@@ -51,7 +51,7 @@ const Story: React.FC<StoryProps> = ({ stickers, photo }) => {
         width={CANVAS_WIDTH}
         height={CANVAS_HEIGHT}
         onMount={initializeApp}
-        className="aspect-video object-contain transform-gpu"
+        className="flex-1 aspect-video object-contain transform-gpu"
       >
         {!!photo && (
           <Sprite

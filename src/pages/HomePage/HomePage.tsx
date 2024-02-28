@@ -31,7 +31,7 @@ const HomePage: React.FC = () => {
     <IonPage>
       <IonContent fullscreen>
         <Story photo={photoImage} stickers={stickers} />
-        <div className="absolute bottom-10 left-0 w-full flex items-center justify-around">
+        <div className="absolute bottom-5 left-0 w-full flex items-center justify-around">
           <IonFabButton className="circle small" onClick={() => setShowStickerModal(true)}>
             <IonIcon
               className="text-3xl text-black"

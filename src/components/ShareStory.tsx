@@ -37,7 +37,7 @@ const ShareStory: React.FC<ShareStoryProps> = ({
   };
   return (
     <>
-      <IonFab slot="fixed" vertical="top" horizontal="end">
+      <IonFab className="mr-2 mt-2" slot="fixed" vertical="top" horizontal="end">
         <IonFabButton id={`present-${shareAlertId}`}>
           <IonIcon icon={shareSocial} />
         </IonFabButton>

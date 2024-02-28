@@ -1,9 +1,6 @@
 import { base64StringToBlob } from "blob-util";
 import { Application, Matrix, RenderTexture } from "pixi.js";
 
-export const SHARE_EXTENSION = "png";
-export const SHARE_FORMAT = `image/${SHARE_EXTENSION}`;
-
 const downloadImage = (filename: string, imageBlob: Blob) => {
   const anchorElement = document.createElement("a");
   const fileUrl = URL.createObjectURL(imageBlob);
@@ -35,43 +32,32 @@ export const shareOrDownloadImage = async (
   downloadImage(filename, imageBlob);
 };
 
-const createTextureWithResolution = (width: number, height: number) =>
-  RenderTexture.create({
-    width,
-    height,
-    resolution: window.devicePixelRatio || 1,
-  });
-
-const createTranslationMatrix = (centerX: number, centerY: number) => {
-  const matrix = new Matrix();
-  matrix.translate(-centerX, -centerY);
-  return matrix;
-};
-
 export const renderAndShareCanvasImage = async (
   app: Application,
   filename: string,
   imageWidth: number,
   imageHeight: number,
   centerX: number,
-  centerY: number
+  centerY: number,
+  format = "image/png",
+  extension = "png"
 ) => {
-  const renderTexture = createTextureWithResolution(imageWidth, imageHeight);
-  const transformMatrix = createTranslationMatrix(centerX, centerY);
+  const renderTexture = RenderTexture.create({
+    width: imageWidth,
+    height: imageHeight,
+    resolution: window.devicePixelRatio || 1,
+  });
+  const transformMatrix = new Matrix().translate(-centerX, -centerY);
 
   app.renderer.render(app.stage, {
     renderTexture,
     transform: transformMatrix,
   });
 
-  const base64 = await app.renderer.extract.base64(
-    renderTexture,
-    SHARE_FORMAT,
-    1
-  );
+  const base64 = await app.renderer.extract.base64(renderTexture, format, 1);
   const blob = base64StringToBlob(
-    base64.replace(`data:${SHARE_FORMAT};base64,`, ""),
-    SHARE_FORMAT
+    base64.replace(`data:${format};base64,`, ""),
+    format
   );
-  await shareOrDownloadImage(`${filename}.${SHARE_EXTENSION}`, blob);
+  await shareOrDownloadImage(`${filename}.${extension}`, blob);
 };
