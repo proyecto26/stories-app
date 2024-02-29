@@ -1,8 +1,9 @@
 
 # Stories App
 
-<img width="694" alt="Stories App" src="https://github.com/proyecto26/stories-app/assets/2154886/01626970-a544-4b4b-bcdf-1962216d8845">
-
+<p align="center">
+  <img width="400px" alt="Stories App" src="https://github.com/proyecto26/stories-app/assets/2154886/01626970-a544-4b4b-bcdf-1962216d8845">
+</p>
 
 ## Introduction
 
