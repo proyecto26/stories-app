@@ -1,6 +1,9 @@
 
 # Stories App
 
+<img width="694" alt="Stories App" src="https://github.com/proyecto26/stories-app/assets/2154886/01626970-a544-4b4b-bcdf-1962216d8845">
+
+
 ## Introduction
 
 This project demonstrates the integration of PixiJS within an Ionic React Progressive Web Application (PWA). It serves as a showcase for developers interested in leveraging the powerful graphics rendering capabilities of PixiJS in combination with the robust framework of Ionic React to create engaging PWA experiences. Specifically, this demo focuses on using the device's camera, loading images, and utilizing PixiJS features to display content within a canvas.
