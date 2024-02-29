@@ -15,6 +15,7 @@ This project demonstrates the integration of PixiJS within an Ionic React Progre
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Dependencies](#dependencies)
 - [License](#license)
 
 ## Features
@@ -23,6 +24,9 @@ This project demonstrates the integration of PixiJS within an Ionic React Progre
 - Integration of PixiJS for advanced graphics rendering within a canvas.
 - Camera functionality to capture images directly from the device.
 - Demonstrates loading and displaying images using PixiJS.
+- Integration of the Giphy SDK to display a grid of images for selection.
+- Ability to add selected images from the Giphy grid as stickers to the canvas.
+- Drag and drop functionality for stickers within the canvas.
 
 ## Installation
 
@@ -41,6 +45,17 @@ npm run dev
 ```
 
 This will start the development server and open the application in your default web browser.
+
+## Dependencies
+
+- **Ionic React**: Used to create a seamless PWA experience.
+- **PixiJS**: Integrated for advanced graphics rendering within a canvas.
+- **Capacitor Plugins**: Leveraged to provide native device features such as camera functionality, haptic feedback, and file system access.
+- **Giphy SDK**: Integrated to display a grid of images for selection. Users can add selected images from the Giphy grid as stickers to the canvas.
+- **React Router**: Used for routing and navigation within the application.
+- **React Hook Resize Observer**: Used to observe changes in the size of the browser window or elements within the application.
+- **Lodash**: A utility library used for simplifying complex operations and providing helpful utility functions.
+- **Blob Util**: Used for working with Blob objects, specifically for converting base64 strings to blobs.
 
 ## License
 
