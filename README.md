@@ -9,6 +9,8 @@
 
 This project demonstrates the integration of PixiJS within an Ionic React Progressive Web Application (PWA). It serves as a showcase for developers interested in leveraging the powerful graphics rendering capabilities of PixiJS in combination with the robust framework of Ionic React to create engaging PWA experiences. Specifically, this demo focuses on using the device's camera, loading images, and utilizing PixiJS features to display content within a canvas.
 
+- Presentation: https://slides.com/juandavidnicholls/pixi-react/
+
 ## Table of Contents
 
 - [Introduction](#introduction)
