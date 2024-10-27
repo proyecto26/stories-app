@@ -62,3 +62,19 @@ This will start the development server and open the application in your default 
 ## License
 
 This project is licensed under the MIT License.
+
+## Supporting 🍻
+I believe in Unicorns 🦄
+Support [me](http://www.paypal.me/jdnichollsc/2), if you do too.
+
+Donate **Ethereum**, **ADA**, **BNB**, **SHIBA**, **USDT/USDC**, **DOGE**, etc:
+
+> Wallet address: jdnichollsc.eth
+
+Please let us know your contributions! 🙏
+
+## Happy coding 💯
+Made with ❤️
+
+<img width="150px" src="https://avatars0.githubusercontent.com/u/28855608?s=200&v=4" align="right">
+
